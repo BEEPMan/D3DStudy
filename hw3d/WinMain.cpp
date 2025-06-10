@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "App.h"
 
 int CALLBACK WinMain(
    HINSTANCE hInstance,
@@ -8,22 +8,7 @@ int CALLBACK WinMain(
 {
     try
     {
-        Window wnd(800, 300, "Hello WinAPI");
-
-        MSG msg;
-        BOOL gResult;
-        while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-
-        if (gResult == -1)
-        {
-            throw CHWND_LAST_EXCEPT();
-        }
-
-        return msg.wParam;
+		return App().Go();
     }
 	catch (const CustomException& e)
 	{
